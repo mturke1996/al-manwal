@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="64" height="64">
+  <!-- إطار ذهبي خارجي مع زخارف -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E90FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4169E1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000080;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- إطار ذهبي خارجي -->
+  <circle cx="100" cy="100" r="95" fill="url(#goldGradient)" stroke="#DAA520" stroke-width="3"/>
+  
+  <!-- زخارف جانبية -->
+  <path d="M 20 100 Q 30 80, 40 100 Q 50 120, 60 100" fill="none" stroke="#DAA520" stroke-width="2"/>
+  <path d="M 140 100 Q 150 80, 160 100 Q 170 120, 180 100" fill="none" stroke="#DAA520" stroke-width="2"/>
+  
+  <!-- الدائرة الرئيسية -->
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#DAA520" stroke-width="2"/>
+  
+  <!-- السماء (الجزء العلوي) -->
+  <path d="M 20 100 A 80 80 0 0 1 180 100 L 180 100 A 80 80 0 0 1 20 100 Z" fill="url(#skyGradient)"/>
+  
+  <!-- الشمس مع أشعة -->
+  <circle cx="100" cy="60" r="15" fill="#FFD700"/>
+  <g stroke="#FFD700" stroke-width="2">
+    <line x1="100" y1="40" x2="100" y2="35"/>
+    <line x1="100" y1="85" x2="100" y2="90"/>
+    <line x1="85" y1="60" x2="80" y2="60"/>
+    <line x1="115" y1="60" x2="120" y2="60"/>
+    <line x1="85" y1="45" x2="80" y2="40"/>
+    <line x1="115" y1="45" x2="120" y2="40"/>
+    <line x1="85" y1="75" x2="80" y2="80"/>
+    <line x1="115" y1="75" x2="120" y2="80"/>
+  </g>
+  
+  <!-- البحر (الجزء السفلي) - طبقات من الأمواج -->
+  <path d="M 20 100 L 180 100 L 180 120 Q 150 110, 100 120 Q 50 110, 20 120 Z" fill="#1E90FF"/>
+  <path d="M 20 120 L 180 120 L 180 140 Q 150 130, 100 140 Q 50 130, 20 140 Z" fill="#4169E1"/>
+  <path d="M 20 140 L 180 140 L 180 160 Q 150 150, 100 160 Q 50 150, 20 160 Z" fill="#000080"/>
+  
+  <!-- الطائرة -->
+  <g transform="translate(100, 100) rotate(-15)">
+    <!-- جسم الطائرة -->
+    <ellipse cx="0" cy="0" rx="25" ry="8" fill="#2F4F4F" stroke="#FFD700" stroke-width="1"/>
+    <!-- الأجنحة -->
+    <path d="M -15 -5 L 15 -5 L 10 -15 L -10 -15 Z" fill="#2F4F4F" stroke="#FFD700" stroke-width="1"/>
+    <path d="M -15 5 L 15 5 L 10 15 L -10 15 Z" fill="#2F4F4F" stroke="#FFD700" stroke-width="1"/>
+    <!-- الذيل -->
+    <path d="M -25 -5 L -20 -5 L -18 -12 L -20 5 L -25 5 Z" fill="#2F4F4F" stroke="#FFD700" stroke-width="1"/>
+    <!-- النوافذ -->
+    <circle cx="-15" cy="-2" r="1.5" fill="white"/>
+    <circle cx="-8" cy="-2" r="1.5" fill="white"/>
+    <circle cx="-1" cy="-2" r="1.5" fill="white"/>
+    <circle cx="6" cy="-2" r="1.5" fill="white"/>
+    <circle cx="13" cy="-2" r="1.5" fill="white"/>
+    <!-- المحرك -->
+    <circle cx="8" cy="8" r="3" fill="#696969"/>
+  </g>
+  
+  <!-- اسم الشركة -->
+  <text x="100" y="185" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#DAA520">AL MENWAL</text>
+  <text x="100" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#DAA520">TOURISM SERVICES</text>
+</svg>
