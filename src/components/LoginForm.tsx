@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,19 +16,38 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // المستخدم الوحيد في النظام
+  // المستخدم الوحيد
   const validUser = {
     username: "Ayoub",
     password: "11223344",
   };
 
+  // التحقق من وجود جلسة سابقة
+  useEffect(() => {
+    const savedSession = localStorage.getItem("session");
+    if (savedSession) {
+      const session = JSON.parse(savedSession);
+      if (session.expiry > Date.now()) {
+        onLogin(true); // دخول مباشر
+      } else {
+        localStorage.removeItem("session"); // انتهت الصلاحية
+      }
+    }
+  }, [onLogin]);
+
   const handleLogin = async () => {
     setIsLoading(true);
 
-    // محاكاة تأخير التحقق
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (username === validUser.username && password === validUser.password) {
+      // حفظ الجلسة ليوم كامل
+      const expiry = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem(
+        "session",
+        JSON.stringify({ username: validUser.username, expiry })
+      );
+
       toast({
         title: "تم تسجيل الدخول بنجاح",
         description: "مرحباً بك في نظام شركة المنوال",
@@ -41,6 +60,7 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
         variant: "destructive",
       });
     }
+
     setIsLoading(false);
   };
 
@@ -56,13 +76,13 @@ const LoginForm = ({ onLogin }: LoginFormProps) => {
         <CardHeader className="text-center pb-8">
           <div className="flex justify-center mb-6">
             <div className="relative group">
-                              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-2xl flex items-center justify-center shadow-xl">
-                  <img
-                    src="/company-logo.svg"
-                    alt="شعار شركة المنوال"
-                    className="w-20 h-20 rounded-lg"
-                  />
-                </div>
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-2xl flex items-center justify-center shadow-xl">
+                <img
+                  src="/company-logo.svg"
+                  alt="شعار شركة المنوال"
+                  className="w-20 h-20 rounded-lg"
+                />
+              </div>
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse"></div>
             </div>
           </div>
